@@ -1,0 +1,37 @@
+{% extends "schoolapp/index.html" %}
+
+{% block titulo %}
+<h2 class="text-center mt-4">Agregar Notas</h2>
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Formulario de Notas</h5>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_estudiante" class="form-label">Estudiante:</label>
+                            {{ form.estudiante }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_materia" class="form-label">Materia:</label>
+                            {{ form.materia }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_nota" class="form-label">Nota:</label>
+                            {{ form.nota }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Agregar Nota</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

@@ -1,0 +1,57 @@
+{% extends "schoolapp/index.html" %}
+
+{% block titulo %}
+<h2 class="text-center mt-4">Agregar Estudiante</h2>
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Formulario de Estudiante</h5>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_nombre" class="form-label">Nombre:</label>
+                            {{ form.nombre }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_apellido" class="form-label">Apellido:</label>
+                            {{ form.apellido }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_edad" class="form-label">Edad:</label>
+                            {{ form.edad }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_correo" class="form-label">Correo:</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_grado" class="form-label">Grado:</label>
+                            {{ form.grado }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Agregar Estudiante</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if messages %}
+<div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock contenido %}

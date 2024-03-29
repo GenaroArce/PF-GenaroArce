@@ -1,0 +1,81 @@
+{% extends "schoolapp/index.html" %}
+
+{% block titulo %}
+<h2 class="text-center mt-4">Registro de Usuario</h2>
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre de usuario:</label>
+                    <input type="text" name="username" class="form-control" id="username" required>
+                </div>
+                {% if form.username.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" class="form-control" id="email" required>
+                </div>
+                {% if form.email.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Contraseña:</label>
+                    <input type="password" name="password1" class="form-control" id="password1" required>
+                </div>
+                {% if form.password1.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.password1.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Confirmar contraseña:</label>
+                    <input type="password" name="password2" class="form-control" id="password2" required>
+                </div>
+                {% if form.password2.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.password2.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Requerimientos</h5>
+                    <ul>
+                        <li>Nombre de usuario: 150 caracteres como máximo. Únicamente letras, dígitos y @/./+/-/_</li>
+                        <li>Email: Debe ser un email válido.</li>
+                        <li>Contraseña:
+                            <ul>
+                                <li>Debe tener al menos 8 caracteres.</li>
+                                <li>No debe ser una clave comúnmente utilizada.</li>
+                                <li>No puede ser completamente numérica.</li>
+                                <li>Los dos campos de contraseña deben coincidir.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
